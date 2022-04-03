@@ -1,0 +1,35 @@
+a)
+for $x in doc("pruxq2t.xml")/prueba2t/descarga/fichero
+return $x/nombre 
+
+b)
+for $x in doc("pruxq2t.xml")/prueba2t/descarga/fichero
+order by $x/nombre
+return $x/nombre 
+
+c)
+for $x in doc("pruxq2t.xml")/prueba2t/descarga
+where $x/duracion > 1000
+return $x/ipserver
+
+d)
+insert nodes
+<descarga>
+<ipserver>81.125.32.109</ipserver>
+<ipuser>192.168.1.23</ipuser>
+<fecha>
+  <dia>09</dia>
+  <mes>03</mes>
+  <anio>2012</anio>
+</fecha>
+<duracion magn="segundos">431</duracion>
+<fichero formato="mp3">
+  <nombre>La Hora de los Sueños</nombre>
+  <tipo>Música</tipo>
+  <peso magn="Kb">1557</peso>
+</fichero>
+</descarga>as last into doc("pruxq2t.xml")/prueba2t
+
+e)
+for $x in doc("pruxq2t.xml")/prueba2t
+return <numdescargas> {count($x/descarga)} </numdescargas>

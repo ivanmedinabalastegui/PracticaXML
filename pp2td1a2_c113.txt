@@ -1,0 +1,64 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="prueba2t">
+        <xs:complexType>
+            <xs:sequence>
+               	<xs:element maxOccurs="unbounded" ref="descarga"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="descarga">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ipserver"/>
+                <xs:element ref="ipuser"/>
+                <xs:element ref="fecha"/>
+                <xs:element ref="duracion"/>
+                <xs:element maxOccurs="unbounded" ref="fichero"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ipserver" type="xs:string"/>
+    <xs:element name="ipuser" type="xs:string"/>
+    <xs:element name="fecha">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dia"/>
+                <xs:element ref="mes"/>
+                <xs:element ref="anio"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dia" type="xs:integer"/>
+    <xs:element name="mes" type="xs:integer"/>
+    <xs:element name="anio" type="xs:integer"/>
+    <xs:element name="duracion">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:integer">
+                    <xs:attribute name="magn" use="required" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="fichero">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="nombre"/>
+                <xs:element ref="tipo"/>
+                <xs:element ref="peso"/>
+            </xs:sequence>
+            <xs:attribute name="formato" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="nombre" type="xs:string"/>
+    <xs:element name="tipo" type="xs:string"/>
+    <xs:element name="peso">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:integer">
+                    <xs:attribute name="magni" use="required" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
